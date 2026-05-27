@@ -1,0 +1,246 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Icons: https://www.nerdfonts.com/cheat-sheet
+# ░▒▓  ▓▒░  
+
+# ////////////////////////////////////////////////
+# FORMAT
+# ////////////////////////////////////////////////
+
+# Left
+# Left
+format = """
+[░▒▓](color_black2)\
+$os\
+$time\
+[](fg:color_black2 bg:color_green)\
+$hostname\
+$localip\
+[](fg:color_green bg:color_blue2)\
+$username\
+[](fg:color_blue2 bg:color_yellow)\
+$shell\
+$shlvl\
+$sudo\
+[](fg:color_yellow bg:color_red)\
+$git_branch\
+$git_status\
+$package\
+$docker_context\
+$python\
+$golang\
+$rust\
+$nodejs\
+$php\
+$java\
+$c\
+$cpp\
+$lua\
+[](fg:color_red bg:color_white3)\
+$directory\
+[](fg:color_white3)\n$character"""
+
+# Right
+right_format = """$cmd_duration"""
+
+# Empty line
+add_newline = true
+
+# ////////////////////////////////////////////////
+# PALETA DE CORES
+# ////////////////////////////////////////////////
+
+palette = 'custom_colors'
+
+[palettes.custom_colors]
+color_fg     = '#769ff0' # Azul claro dos textos
+color_bg     = '#090c0c' # Fundo escuro do OS
+color_black2 = '#1d2230' # Fundo do Time / OS inicial
+color_green  = '#394260' # Adaptado para bater com o Git
+color_blue2  = '#212736' # Fundo das linguagens/Docker
+color_yellow = '#212736' # Mantido tom escuro
+color_red    = '#394260' # Fundo do Git do bloco central
+color_white3 = '#769ff0' # Fundo do Directory (azul principal)
+
+# ////////////////////////////////////////////////
+# LINE BREAK & CHARACTER
+# ////////////////////////////////////////////////
+
+[line_break]
+disabled = false
+
+[character]
+disabled = false
+success_symbol = "[❯](bold fg:#769ff0)"
+error_symbol = "[❯](bold fg:#e06c75)"
+vimcmd_symbol = "[❮](bold fg:#a0a9cb)"
+
+# ////////////////////////////////////////////////
+# MODULES LEFT
+# ////////////////////////////////////////////////
+
+[os]
+disabled = false
+style = "bg:color_black2 fg:color_bg"
+format = '[ $symbol]($style)'
+
+[os.symbols]
+Alpaquita = " "
+Alpine = " "
+Amazon = " "
+Android = " "
+Arch = " "
+CachyOS = " "
+CentOS = " "
+Debian = " "
+EndeavourOS = " "
+Fedora = " "
+FreeBSD = " "
+Kali = " "
+Linux = " "
+Macos = " "
+Manjaro = " "
+Mint = " "
+NixOS = " "
+Nobara = " "
+Pop = " "
+Raspbian = " "
+Ubuntu = " "
+Windows = "󰍲 "
+Unknown = " "
+
+[time]
+disabled = false
+time_format = "%R"
+style = "bg:color_black2"
+format = '[[ $time ](fg:#a0a9cb bg:color_black2)]($style)'
+
+[hostname]
+disabled = false
+ssh_only = true
+ssh_symbol =  " 󱘖 "
+style = "fg:color_white3 bg:color_green"
+format = '[$ssh_symbol]($style)[ 󰍹  $hostname ]($style)'
+
+[localip]
+disabled = false
+ssh_only = true
+style = "fg:color_white3 bg:color_green"
+format = '[ 󰩟 $localipv4 ]($style)'
+
+[username]
+disabled = false
+show_always = false
+style_user = "fg:color_fg bg:color_blue2"
+style_root = "fg:#e06c75 bg:color_blue2"
+format = '[  ]($style)[ $user ]($style)'
+
+[shell]
+disabled = false
+fish_indicator = ""
+bash_indicator = "   bash "
+unknown_indicator = "   shell "
+style = "fg:color_fg bg:color_yellow"
+format = "[$indicator]($style)"
+
+[shlvl]
+disabled = false
+threshold = 2
+symbol = ''
+style = "fg:color_fg bg:color_yellow"
+format = "[ $symbol $shlvl ]($style)"
+
+[sudo]
+disabled = false
+symbol = '󰌆 '
+style = "fg:#e06c75 bg:color_yellow"
+format = '[ $symbol ]($style)'
+
+[git_branch]
+symbol = " "
+style = "bg:color_red"
+format = '[[ $symbol $branch ](fg:color_fg bg:color_red)]($style)'
+
+[git_status]
+style = "bg:color_red"
+format = '[[($all_status$ahead_behind )](fg:color_fg bg:color_red)]($style)'
+
+[package]
+format = '[  $version ](fg:color_fg bg:color_red)'
+
+# --- LINGUAGENS E FERRAMENTAS (Adicionados à estrutura) ---
+
+[python]
+symbol = " "
+style = "bg:color_blue2"
+format = '[[ $symbol($version) ](fg:color_fg bg:color_blue2)]($style)'
+
+[golang]
+symbol = "󰟓 "
+style = "bg:color_blue2"
+format = '[[ $symbol($version) ](fg:color_fg bg:color_blue2)]($style)'
+
+[rust]
+symbol = "󱘗 "
+style = "bg:color_blue2"
+format = '[[ $symbol($version) ](fg:color_fg bg:color_blue2)]($style)'
+
+[nodejs]
+symbol = " "
+style = "bg:color_blue2"
+format = '[[ $symbol($version) ](fg:color_fg bg:color_blue2)]($style)'
+
+[php]
+symbol = " "
+style = "bg:color_blue2"
+format = '[[ $symbol($version) ](fg:color_fg bg:color_blue2)]($style)'
+
+[java]
+symbol = " "
+style = "bg:color_blue2"
+format = '[[ $symbol($version) ](fg:color_fg bg:color_blue2)]($style)'
+
+[c]
+symbol = " "
+style = "bg:color_blue2"
+format = '[[ $symbol($version) ](fg:color_fg bg:color_blue2)]($style)'
+
+[cpp]
+symbol = " "
+style = "bg:color_blue2"
+format = '[[ $symbol($version) ](fg:color_fg bg:color_blue2)]($style)'
+
+[lua]
+symbol = " "
+style = "bg:color_blue2"
+format = '[[ $symbol($version) ](fg:color_fg bg:color_blue2)]($style)'
+
+[docker_context]
+symbol = " "
+style = "bg:color_blue2"
+format = '[[ $symbol ](fg:color_fg bg:color_blue2)]($style)'
+
+# --- DIRETÓRIO ---
+
+[directory]
+style = "fg:#090c0c bg:color_white3"
+format = "[ $path ]($style)[$read_only]($style)"
+truncation_length = 6
+truncation_symbol = "••/"
+home_symbol = " "
+read_only = "  "
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+
+# ////////////////////////////////////////////////
+# MODULES RIGHT
+# ////////////////////////////////////////////////
+
+[cmd_duration]
+min_time = 2000
+style = "fg:#a0a9cb"
+format = " [took $duration]($style)"
